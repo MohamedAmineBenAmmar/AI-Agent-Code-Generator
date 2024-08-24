@@ -1,0 +1,26 @@
+LlamaIndex, Ollama and Multi-LLM
+
+RAG using LlamaIndex
+- Using llamaindex we can load any type of file we want to the model to perform RAG
+- We load multiple files at once
+
+PDF data load process explination
+1- Parse the pdf into logical chunks
+2- Create a vector stored index (its a fast and quick database that will allow us to find quickly anything that we are we looking for)
+3- Instead of loading the entire pdf the LLM is going to interact with this database and load specific portion of the data to answer a specific prompt
+4- We create this database using the vector embeddings (they take our data and embed it into a multi dimensional space to allow us to query it based on multiple types of factors)
+
+=> Rather than loading all data at once => Query the vector store index => Give us the info that we need => Injected it into the LLM => LLM use that info to answer the prompt
+=> All we need to do is to create this index
+
+LlamaParse
+- Tool created by LlamaIndex
+- Parsing pdf files that hold figures or tables was hard and querying the model before using the parser gived us bad results
+- To get better results from RAG we need to extract the data from these documents, putting it into a specific format to finally inject it into the vector index database.
+- LlamaParse will parse unstructured and semi-structured data better to create a better emeddings that are going to be the input to our vector index database
+
+AI Agent development
+- The code that wrote initially using LlamaParse is a tool that is going to be used by our agent
+- The agent is able multiple tools. Each tool for a specific task
+- The agent is able to use the vector index and the query_engine to query the pdf file and the api documentation and more
+- At a specific point of the application creation we only loaded the pdf file using the LlamaParse but the agent is able to use multiple tools together and combine their results to build the response that is going to be displayed
